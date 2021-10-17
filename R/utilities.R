@@ -68,7 +68,8 @@ declare_time_error_if_data <- function(declaration) {
 
 future_lapply <- function(..., future.seed = TRUE, future.globals = TRUE) {
   if (requireNamespace("future.apply", quietly = TRUE)) {
-    future.apply::future_lapply(..., future.seed = future.seed, future.globals = future.globals)
+    future.apply::future_lapply(..., future.seed = future.seed, future.globals = future.globals, 
+                                future.scheduling = structure(TRUE,ordering = "random"))
   } else {
     lapply(...)
   }
